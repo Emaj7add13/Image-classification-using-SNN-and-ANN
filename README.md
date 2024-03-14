@@ -8,23 +8,23 @@ Python\Python310\lib\site-packages\pytorch_grad_cam\base_cam.py
 
 at line 85
 
-'''python
+```python
 if targets is None:
     target_categories = np.argmax(outputs.cpu().data.numpy(), axis=-1)
    targets = [ClassifierOutputTarget(
         category) for category in target_categories]
-'''
+```
 
 add the code in forward() below 'if targets is None:'
 
-'''python
+```python
 if len(outputs)>1:
     outputs=outputs[0]
-'''
+```
 
 Then it looks like:
 
-'''python
+```python
 if targets is None:
     #SNN has 2 outputs, spk_out and mem_out. Here we take the first output. 
     if len(outputs)>1:
@@ -32,4 +32,4 @@ if targets is None:
     target_categories = np.argmax(outputs.cpu().data.numpy(), axis=-1)
    targets = [ClassifierOutputTarget(
         category) for category in target_categories]
-'''
+```
